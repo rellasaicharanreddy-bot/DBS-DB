@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoTrack | Operations Overview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{--ink:#172b27;--muted:#84938e;--line:#e8eeeb;--green:#16856d;--green2:#e6f4ef;--bg:#f6f8f7;--orange:#df8b43;--red:#d85b54}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:14px}.app-shell{display:flex;min-height:100vh}.sidebar{width:244px;background:#fff;border-right:1px solid var(--line);padding:27px 17px 20px;display:flex;flex-direction:column;flex-shrink:0}.brand{display:flex;align-items:center;gap:11px;padding:0 10px 43px}.brand-mark{width:35px;height:35px;border-radius:11px;background:#dff3eb;color:#138568;display:grid;place-items:center;font-size:24px}.brand b{font:800 20px Manrope;letter-spacing:-1px}.brand small{display:block;font-size:8px;letter-spacing:1.35px;color:#96a39e;margin-top:2px}.side-label,.eyebrow{font-size:9px;letter-spacing:1.45px;color:#9aa7a2;font-weight:700}.side-label{padding:0 12px 13px}.sidebar nav{display:grid;gap:5px}.nav-item{border:0;background:transparent;text-align:left;padding:12px 13px;border-radius:9px;color:#74827d;font:500 13px 'DM Sans';cursor:pointer;display:flex;align-items:center;gap:13px}.nav-item span{font-size:18px;width:19px;text-align:center}.nav-item:hover{background:#f6f9f7}.nav-item.active{background:#eaf5f0;color:#13775f;font-weight:700}.sidebar-bottom{margin-top:auto;border-top:1px solid var(--line);padding:18px 7px 0;display:flex;gap:10px;align-items:center;font-size:11px}.sidebar-bottom small{display:block;color:#9aa7a2;margin-top:3px}.status-dot{width:8px;height:8px;border-radius:50%;background:#38ad80;box-shadow:0 0 0 4px #e6f5ee}.main{max-width:1600px;flex:1;padding:31px 42px 55px;min-width:0}.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:34px}.eyebrow{margin-bottom:9px}.eyebrow span{color:#4b9b80}.topbar h1{font:700 25px Manrope;letter-spacing:-.8px;margin:0}.topbar h1 span{color:#e3a74b;font-size:18px}.top-actions{display:flex;align-items:center;gap:17px}.date-chip{border:1px solid var(--line);background:white;border-radius:8px;padding:10px 13px;color:#6f7d77;font-size:11px}.avatar{width:35px;height:35px;border-radius:50%;background:#dceee7;color:#26765f;display:grid;place-items:center;font-weight:700;font-size:11px}.page{display:none}.page.active{display:block}.welcome-row,.section-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}.welcome-row h2,.section-heading h2{font:700 19px Manrope;letter-spacing:-.5px;margin:0 0 5px}.welcome-row p,.section-heading p{color:var(--muted);margin:0;font-size:12px}.primary{border:0;background:#167d64;color:#fff;border-radius:8px;padding:11px 16px;font:600 12px 'DM Sans';cursor:pointer;box-shadow:0 3px 8px #167d6420}.primary:hover{background:#116a55}.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:18px}.stat-card,.panel{background:#fff;border:1px solid var(--line);border-radius:12px}.stat-card{padding:18px 19px}.stat-top{display:flex;justify-content:space-between;align-items:center;color:#73817c;font-size:11px;font-weight:600}.stat-icon{width:31px;height:31px;border-radius:9px;display:grid;place-items:center;font-size:17px}.mint{background:#e7f5ef;color:#16856d}.orange{background:#fff2e7;color:#d78b45}.blue{background:#eaf2fb;color:#648bb8}.purple{background:#f2edfb;color:#9077bd}.stat-card strong{display:block;font:800 27px Manrope;letter-spacing:-1px;margin:10px 0 4px}.stat-card strong em{font:600 12px 'DM Sans';color:#9aa7a2}.stat-card small{font-size:10px;color:#98a49f}.green{color:#38a77c;font-size:9px}.content-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:17px;margin-bottom:17px}.panel{padding:20px}.panel-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px}.panel-head h3{font:700 14px Manrope;margin:0 0 5px}.panel-head p{font-size:10px;color:#98a49f;margin:0}.pill{font-size:8px;letter-spacing:1px;font-weight:700;color:#16856d;background:#eaf6f0;padding:6px 8px;border-radius:5px}.bar-chart{height:170px;display:flex;align-items:flex-end;justify-content:space-around;gap:12px;padding:12px 6px 0;border-bottom:1px solid var(--line)}.bar-item{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:7px;flex:1}.bar{width:min(29px,70%);border-radius:5px 5px 0 0;background:#71bca0;min-height:5px;position:relative}.bar.warn{background:#e7b36f}.bar.critical{background:#df7770}.bar-item small{font-size:9px;color:#899690}.bar-item b{font-size:9px;color:#67756f;font-weight:600}.legend{display:flex;gap:17px;margin-top:14px;color:#87948e;font-size:9px}.legend i{display:inline-block;width:7px;height:7px;border-radius:2px;margin-right:5px}.legend-green{background:#71bca0}.legend-orange{background:#e7b36f}.legend-red{background:#df7770}.text-btn{border:0;background:none;color:#16856d;font:600 10px 'DM Sans';cursor:pointer}.activity-list{display:grid}.activity{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #f0f3f1}.activity:last-child{border:0}.activity-icon{width:30px;height:30px;border-radius:8px;background:#eaf5f0;color:#16856d;display:grid;place-items:center}.activity b{font-size:10px;display:block}.activity small{color:#9aa6a1;font-size:9px}.activity strong{margin-left:auto;font-size:11px}.schedule-panel{padding-bottom:10px}.table-panel{padding:0;overflow:hidden}table{width:100%;border-collapse:collapse;text-align:left}th{font-size:9px;letter-spacing:.7px;color:#9aa7a2;background:#fafcfb;padding:13px 17px;font-weight:700}td{padding:14px 17px;border-top:1px solid #eff2f0;font-size:11px;color:#61716a}td b{color:#263c34;font-weight:600}.tag{display:inline-block;padding:5px 8px;border-radius:5px;background:#edf6f1;color:#258366;font-size:9px;font-weight:700}.tag.orange{background:#fff4e9;color:#c7833d}.tag.red{background:#fff0ef;color:#c65c56}.toolbar{display:flex;gap:10px;margin-bottom:15px}.toolbar input,.toolbar select{border:1px solid var(--line);background:#fff;border-radius:8px;padding:11px 13px;font:11px 'DM Sans';color:#52635b;outline:none}.toolbar input{width:280px}.locations-grid,.teams-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.location-card,.team-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px}.location-symbol{width:38px;height:38px;border-radius:10px;background:#e8f5ef;color:#16856d;display:grid;place-items:center;font-size:19px;margin-bottom:15px}.location-card h3,.team-card h3{font:700 14px Manrope;margin:0 0 4px}.location-card p,.team-card p{font-size:10px;color:#98a49f;margin:0}.location-meta{display:flex;justify-content:space-between;border-top:1px solid var(--line);margin-top:17px;padding-top:13px;font-size:10px;color:#8b9992}.team-avatar{width:38px;height:38px;border-radius:50%;background:#e9f2fa;color:#648bb8;display:grid;place-items:center;font-weight:700;margin-bottom:14px}.team-card .team-details{display:flex;gap:20px;margin-top:16px;padding-top:13px;border-top:1px solid var(--line);font-size:10px;color:#89968f}.team-details b{display:block;color:#32463d;font-size:12px;margin-top:3px}.prediction-card{background:#173e34;color:white;border-radius:13px;padding:25px;margin-bottom:17px;display:flex;justify-content:space-between;align-items:center}.prediction-card h3{font:700 16px Manrope;margin:0 0 7px}.prediction-card p{color:#b4cec3;font-size:10px;max-width:480px;line-height:1.6;margin:0}.prediction-value{text-align:right}.prediction-value strong{font:800 32px Manrope;display:block}.prediction-value small{color:#b4cec3;font-size:9px}.modal{position:fixed;inset:0;background:#142b2470;display:none;align-items:center;justify-content:center;padding:20px;z-index:5}.modal.show{display:flex}.modal-card{background:white;border-radius:14px;padding:23px;width:100%;max-width:450px;box-shadow:0 20px 60px #102a2030}.modal-head{display:flex;justify-content:space-between;margin-bottom:18px}.modal-head h3{font:700 17px Manrope;margin:0 0 4px}.modal-head p{font-size:10px;color:#94a19b;margin:0}.close{border:0;background:#f2f5f3;border-radius:7px;width:29px;height:29px;font-size:20px;color:#718078;cursor:pointer}.field{display:grid;gap:6px;margin-bottom:13px}.field label{font-size:10px;font-weight:700;color:#66766e}.field input,.field select{border:1px solid var(--line);border-radius:7px;padding:10px;font:11px 'DM Sans';outline:none}.modal-submit{width:100%;margin-top:5px}.toast{position:fixed;bottom:25px;right:25px;background:#173e34;color:white;padding:12px 17px;border-radius:8px;font-size:11px;opacity:0;transform:translateY(10px);transition:.2s;z-index:10}.toast.show{opacity:1;transform:translateY(0)}.empty{padding:30px;text-align:center;color:#9aa7a2;font-size:11px}
+@media(max-width:1000px){.sidebar{width:205px}.main{padding:25px}.stats-grid{grid-template-columns:repeat(2,1fr)}.content-grid{grid-template-columns:1fr}.locations-grid,.teams-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.sidebar{width:62px;padding:20px 8px}.brand{padding:0 5px 30px}.brand>div:last-child,.side-label,.nav-item:not(.active){display:none}.nav-item{font-size:0;padding:12px 10px;justify-content:center}.nav-item span{font-size:19px}.sidebar-bottom{display:none}.main{padding:20px 14px}.topbar h1{font-size:19px}.date-chip{display:none}.welcome-row,.section-heading{align-items:flex-start;gap:12px;flex-direction:column}.stats-grid{gap:9px}.stat-card{padding:13px}.stat-card strong{font-size:23px}.locations-grid,.teams-grid{grid-template-columns:1fr}.toolbar{flex-direction:column}.toolbar input{width:100%}.table-panel{overflow-x:auto}table{min-width:620px}.prediction-card{align-items:flex-start;gap:15px;flex-direction:column}.prediction-value{text-align:left}}
+
+/* EcoTrack responsive polish */
+@media (max-width: 1000px) {
+  .sidebar { width: 218px; }
+  .main { padding-left: 25px; padding-right: 25px; }
+}
+@media (max-width: 700px) {
+  .app-shell { display: block; }
+  .sidebar {
+    width: 100%; min-height: auto; padding: 14px 12px;
+    border-right: 0; border-bottom: 1px solid var(--line);
+  }
+  .brand { padding: 0 8px 14px; }
+  .sidebar nav {
+    display: flex; overflow-x: auto; gap: 5px;
+    padding-bottom: 4px; scrollbar-width: thin;
+  }
+  .nav-item { white-space: nowrap; padding: 10px 11px; }
+  .sidebar-bottom { display: none; }
+  .main { padding: 20px 14px 35px; }
+  .topbar { gap: 12px; align-items: flex-start; margin-bottom: 22px; }
+  .top-actions { flex-wrap: wrap; justify-content: flex-end; }
+  .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .content-grid { grid-template-columns: 1fr; }
+  .page-heading { gap: 10px; flex-wrap: wrap; }
+  .table-wrap { overflow-x: auto; }
+}
+button, .nav-item, input, select { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, .nav-item:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 3px solid #9bd3bb; outline-offset: 2px;
+}
+
+
+/* Overview dashboard upgrade */
+.overview-hero{background:linear-gradient(115deg,#153f34 0%,#1d6954 62%,#25856a 100%);border-radius:18px;padding:25px 28px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:18px;position:relative;overflow:hidden}
+.overview-hero:after{content:"";position:absolute;width:230px;height:230px;border:1px solid #ffffff20;border-radius:50%;right:90px;top:-130px;box-shadow:0 0 0 28px #ffffff08,0 0 0 58px #ffffff06}
+.hero-copy{position:relative;z-index:1}.hero-kicker{font-size:9px;letter-spacing:1.6px;color:#b9ded0;font-weight:700;margin-bottom:9px}.overview-hero h2{font:800 23px Manrope;margin:0 0 8px;letter-spacing:-.7px}.overview-hero p{font-size:11px;color:#d0e5dc;margin:0;max-width:470px;line-height:1.6}.hero-actions{display:flex;gap:9px;position:relative;z-index:1;flex-wrap:wrap}.hero-btn{border:1px solid #ffffff50;background:#ffffff16;color:#fff;border-radius:8px;padding:10px 13px;font:600 10px 'DM Sans';cursor:pointer}.hero-btn.light{background:#fff;color:#17634f;border-color:#fff}
+.overview-meta{display:flex;gap:9px;align-items:center;color:#71817a;font-size:10px;margin:0 0 14px}.live-pulse{width:7px;height:7px;background:#35b77e;border-radius:50%;box-shadow:0 0 0 4px #dff4e9}
+.stat-card{transition:transform .18s,box-shadow .18s}.stat-card:hover{transform:translateY(-3px);box-shadow:0 10px 25px #183c2c0c}.stat-trend{display:inline-flex;align-items:center;gap:4px;margin-top:9px;font-size:9px;color:#32936e;font-weight:700}.stat-trend.warn{color:#c7833d}.stat-foot{display:flex;justify-content:space-between;align-items:center;margin-top:8px}.mini-spark{width:68px;height:23px}
+.overview-lower{display:grid;grid-template-columns:1.2fr .8fr;gap:17px;margin-bottom:17px}.health-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:19px}.health-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #eff3f0}.health-row:last-child{border:0}.health-count{font:800 17px Manrope;width:34px}.health-label{flex:1}.health-label b{font-size:10px;display:block}.health-label small{font-size:9px;color:#9aa7a2}.health-track{height:7px;width:90px;background:#eff3f1;border-radius:20px;overflow:hidden}.health-track i{display:block;height:100%;border-radius:20px}.health-status{font-size:9px;font-weight:700;min-width:58px;text-align:right}
+.quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:17px}.quick-card{border:1px solid var(--line);background:#fff;border-radius:11px;padding:15px;display:flex;align-items:center;gap:11px;text-align:left;cursor:pointer;color:var(--ink)}.quick-card:hover{border-color:#b8d9cb;background:#fbfefc}.quick-icon{width:34px;height:34px;border-radius:9px;background:#e8f5ef;color:#16856d;display:grid;place-items:center;font-size:17px}.quick-card b{font-size:10px;display:block}.quick-card small{font-size:9px;color:#9aa7a2}
+.activity-time{margin-left:auto;color:#9aa7a2;font-size:9px;white-space:nowrap}.schedule-row{display:grid;grid-template-columns:46px 1fr auto;gap:11px;align-items:center;padding:12px 0;border-bottom:1px solid #eff2f0}.schedule-row:last-child{border:0}.schedule-date{background:#eef6f1;border-radius:8px;padding:7px 4px;text-align:center;color:#267b60}.schedule-date b{font:800 14px Manrope;display:block}.schedule-date small{font-size:8px;text-transform:uppercase}.schedule-info b{font-size:10px;display:block}.schedule-info small{font-size:9px;color:#98a49f}.schedule-time{font-size:9px;color:#718078;white-space:nowrap}
+.overview-toolbar{display:flex;align-items:center;gap:8px}.outline-btn{border:1px solid var(--line);background:#fff;color:#65756d;border-radius:8px;padding:9px 11px;font:600 10px 'DM Sans';cursor:pointer}.outline-btn:hover{border-color:#b8d9cb;color:#167d64}
+@media(max-width:900px){.overview-lower{grid-template-columns:1fr}.overview-hero{align-items:flex-start;flex-direction:column}.hero-actions{margin-top:3px}}
+@media(max-width:600px){.quick-grid{grid-template-columns:1fr}.overview-hero{padding:21px}.overview-hero h2{font-size:20px}.health-track{width:65px}.overview-meta{flex-wrap:wrap}}
+
+
+/* Sign in / sign up gate */
+.auth-screen{position:fixed;inset:0;z-index:50;background:linear-gradient(135deg,#123d32,#18775f 58%,#e8f3ed);display:none;align-items:center;justify-content:center;padding:22px}.auth-screen.show{display:flex}
+.auth-card{width:100%;max-width:430px;background:#fff;border:1px solid #e7eeea;border-radius:18px;padding:30px;box-shadow:0 25px 80px #0b2b2140}
+.auth-brand{display:flex;align-items:center;gap:11px;margin-bottom:25px}.auth-brand b{font:800 22px Manrope}.auth-brand small{display:block;color:#98a49f;font-size:9px;letter-spacing:1.4px}
+.auth-card h2{font:800 23px Manrope;margin:0 0 6px}.auth-sub{font-size:12px;color:#8b9992;margin:0 0 22px}
+.auth-tabs{display:grid;grid-template-columns:1fr 1fr;background:#f2f6f3;padding:4px;border-radius:9px;margin-bottom:20px}.auth-tabs button{border:0;background:transparent;padding:10px;border-radius:7px;color:#77867f;font:600 12px 'DM Sans';cursor:pointer}.auth-tabs button.active{background:#fff;color:#167d64;box-shadow:0 2px 7px #153b2b12}
+.auth-card .field input{padding:12px;font-size:12px}.auth-submit{width:100%;padding:13px;margin-top:5px}.auth-note{font-size:10px;color:#9aa7a2;line-height:1.5;margin:16px 0 0;text-align:center}.auth-error{display:none;color:#c65c56;background:#fff1ef;border-radius:7px;padding:9px 11px;font-size:11px;margin-bottom:12px}.auth-error.show{display:block}
+.user-chip{display:flex;align-items:center;gap:8px}.logout-btn{border:1px solid var(--line);background:#fff;color:#718078;border-radius:8px;padding:9px 11px;font:600 10px 'DM Sans';cursor:pointer}
+.efficiency-wrap{display:flex;align-items:center;gap:17px;padding:9px 0 15px}.efficiency-ring{width:108px;height:108px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;background:conic-gradient(#16856d 0deg,#eaf1ed 0deg 360deg);position:relative}.efficiency-ring:before{content:"";position:absolute;width:82px;height:82px;background:#fff;border-radius:50%}.efficiency-ring strong{position:relative;font:800 23px Manrope;color:#176c56}.efficiency-copy b{font:700 13px Manrope}.efficiency-copy p{font-size:10px;color:#96a39e;line-height:1.6;margin:6px 0 0}.efficiency-legend{display:flex;justify-content:space-between;gap:8px;border-top:1px solid #eff3f0;padding-top:12px;font-size:10px;color:#8d9a94;flex-wrap:wrap}
+@media(max-width:600px){.auth-card{padding:23px}.efficiency-wrap{gap:12px}.efficiency-ring{width:92px;height:92px}.efficiency-ring:before{width:70px;height:70px}}
+
+</style>
+</head>
+<body>
+
+<div id="auth-screen" class="auth-screen"><div class="auth-card">
+  <div class="auth-brand"><div class="brand-mark">✳</div><div><b>ecotrack</b><small>SMART CITY PLATFORM</small></div></div>
+  <h2 id="auth-title">Welcome back</h2><p class="auth-sub" id="auth-subtitle">Sign in to manage city waste operations.</p>
+  <div class="auth-tabs"><button id="signin-tab" class="active" type="button" onclick="showAuthMode('signin')">Sign in</button><button id="signup-tab" type="button" onclick="showAuthMode('signup')">Create account</button></div>
+  <div id="auth-error" class="auth-error"></div>
+  <form id="auth-form"><div id="auth-name-field" class="field" style="display:none"><label>Full name</label><input name="name" autocomplete="name" placeholder="Enter your name"></div>
+  <div class="field"><label>Email address</label><input name="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+  <div class="field"><label>Password</label><input name="password" type="password" minlength="6" placeholder="At least 6 characters" required></div>
+  <button class="primary auth-submit" id="auth-submit" type="submit">Sign in</button></form>
+  <p class="auth-note">Demo account is saved in this browser only. For production use, connect secure server-side authentication.</p>
+</div></div>
+
+<div class="app-shell">
+<aside class="sidebar">
+  <div class="brand"><div class="brand-mark">✳</div><div><b>ecotrack</b><small>SMART CITY PLATFORM</small></div></div>
+  <div class="side-label">WORKSPACE</div>
+  <nav>
+    <button class="nav-item active" data-page="overview"><span>▦</span> Overview</button>
+    <button class="nav-item" data-page="bins"><span>▤</span> Bin management</button>
+    <button class="nav-item" data-page="locations"><span>⌖</span> Locations</button>
+    <button class="nav-item" data-page="teams"><span>♧</span> Collection teams</button>
+    <button class="nav-item" data-page="schedules"><span>▣</span> Schedules</button>
+    <button class="nav-item" data-page="history"><span>↗</span> Collection history</button>
+    <button class="nav-item" data-page="insights"><span>◷</span> Smart insights</button>
+  </nav>
+  <div class="sidebar-bottom"><div class="status-dot"></div><div><b>System operational</b><small>Last synced just now</small></div></div>
+</aside>
+<main class="main">
+<header class="topbar"><div><div class="eyebrow">CITY OPERATIONS / <span id="crumb">OVERVIEW</span></div><h1 id="page-title">Good morning, Admin <span>✦</span></h1></div>
+<div class="top-actions"><div class="date-chip">◷ <span id="today"></span></div><div class="user-chip"><div class="avatar" id="user-avatar">AD</div><button class="logout-btn" onclick="signOut()">Sign out</button></div></div></header>
+<section id="page-overview" class="page active">
+  <div class="overview-hero">
+    <div class="hero-copy">
+      <div class="hero-kicker">CITY OPERATIONS DASHBOARD</div>
+      <h2>Your city, a little cleaner every day.</h2>
+      <p>Monitor bin capacity, track collection activity and keep every neighbourhood moving towards a cleaner tomorrow.</p>
+    </div>
+    <div class="hero-actions">
+      <button class="hero-btn light" onclick="openModal('collection')">＋ Log a collection</button>
+      <button class="hero-btn" onclick="exportOverview()">↓ Export overview</button>
+    </div>
+  </div>
+
+  <div class="overview-meta"><span class="live-pulse"></span><b>LIVE NETWORK MONITORING</b><span>·</span><span>Last updated <b id="last-updated">just now</b></span><span style="margin-left:auto" id="overview-date"></span></div>
+
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-top"><span>Total bins</span><span class="stat-icon mint">▤</span></div><strong id="stat-bins">128</strong><div class="stat-foot"><small><i class="green">●</i> <span id="stat-active">121</span> active across the city</small><span class="stat-trend">↑ 8.2%</span></div></div>
+    <div class="stat-card"><div class="stat-top"><span>Critical fill levels</span><span class="stat-icon orange">⌁</span></div><strong id="stat-critical">14</strong><div class="stat-foot"><small>Bins above 80% capacity</small><span class="stat-trend warn">Needs attention</span></div></div>
+    <div class="stat-card"><div class="stat-top"><span>Waste collected</span><span class="stat-icon blue">♧</span></div><strong><span id="stat-kg">2,480</span><em> kg</em></strong><div class="stat-foot"><small>Recorded collection weight</small><span class="stat-trend">↑ 12.4%</span></div></div>
+    <div class="stat-card"><div class="stat-top"><span>Average bin fill</span><span class="stat-icon purple">◉</span></div><strong><span id="stat-fill">62</span><em>%</em></strong><div class="stat-foot"><small>Across all registered bins</small><span class="stat-trend">↓ 3.1%</span></div></div>
+  </div>
+
+  <div class="content-grid">
+    <div class="panel">
+      <div class="panel-head"><div><h3>Bin fill levels</h3><p>Current capacity across monitored zones</p></div><span class="pill">LIVE STATUS</span></div>
+      <div id="fill-chart" class="bar-chart" aria-label="Bin fill levels chart">
+        <div class="bar-item"><b>42%</b><div class="bar" style="height:42%"></div><small>Central</small></div>
+        <div class="bar-item"><b>68%</b><div class="bar warn" style="height:68%"></div><small>North</small></div>
+        <div class="bar-item"><b>86%</b><div class="bar critical" style="height:86%"></div><small>South</small></div>
+        <div class="bar-item"><b>54%</b><div class="bar" style="height:54%"></div><small>East</small></div>
+        <div class="bar-item"><b>73%</b><div class="bar warn" style="height:73%"></div><small>West</small></div>
+        <div class="bar-item"><b>31%</b><div class="bar" style="height:31%"></div><small>Lake</small></div>
+      </div>
+      <div class="legend"><span><i class="legend-green"></i> Healthy · below 60%</span><span><i class="legend-orange"></i> Attention · 60–80%</span><span><i class="legend-red"></i> Critical · above 80%</span></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><div><h3>Collection activity</h3><p>Latest recorded pickups</p></div><button class="text-btn" onclick="navigate('history')">View all →</button></div>
+      <div id="recent-list" class="activity-list">
+        <div class="activity"><div class="activity-icon">♧</div><div><b>Plastic waste collected</b><small>Central Market · Team Alpha</small></div><strong>86 kg</strong><span class="activity-time">09:42</span></div>
+        <div class="activity"><div class="activity-icon">♧</div><div><b>Organic waste collected</b><small>Lake View · Team Green</small></div><strong>124 kg</strong><span class="activity-time">09:15</span></div>
+        <div class="activity"><div class="activity-icon">♧</div><div><b>Mixed waste collected</b><small>North Avenue · Team Beta</small></div><strong>65 kg</strong><span class="activity-time">08:50</span></div>
+        <div class="activity"><div class="activity-icon">♧</div><div><b>Paper waste collected</b><small>Tech Park · Team Alpha</small></div><strong>42 kg</strong><span class="activity-time">08:20</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overview-lower">
+    <div class="health-panel">
+      <div class="panel-head"><div><h3>Network health</h3><p>Distribution of registered bins by fill status</p></div><span class="pill">128 BINS</span></div>
+      <div class="health-row"><div class="health-count" style="color:#269b73">72</div><div class="health-label"><b>Healthy</b><small>Below 60% capacity</small></div><div class="health-track"><i style="width:56%;background:#71bca0"></i></div><div class="health-status" style="color:#269b73">56.3%</div></div>
+      <div class="health-row"><div class="health-count" style="color:#d78b45">42</div><div class="health-label"><b>Attention needed</b><small>60–80% capacity</small></div><div class="health-track"><i style="width:33%;background:#e7b36f"></i></div><div class="health-status" style="color:#c7833d">32.8%</div></div>
+      <div class="health-row"><div class="health-count" style="color:#d85b54">14</div><div class="health-label"><b>Critical</b><small>Above 80% capacity</small></div><div class="health-track"><i style="width:11%;background:#df7770"></i></div><div class="health-status" style="color:#c65c56">10.9%</div></div>
+    </div>
+    <div class="health-panel">
+      <div class="panel-head"><div><h3>Collection efficiency</h3><p>Today's operational progress</p></div><span class="pill">TODAY</span></div>
+      <div class="efficiency-wrap"><div class="efficiency-ring" id="efficiency-ring"><strong id="efficiency-percent">0%</strong></div>
+      <div class="efficiency-copy"><b id="efficiency-summary">0 of 0 routes completed</b><p id="efficiency-message">Create collection schedules to track today's operational progress.</p></div></div>
+      <div class="efficiency-legend"><span>Completed <b id="efficiency-completed" style="color:#268765">0</b></span><span>In progress <b id="efficiency-progress" style="color:#d18b46">0</b></span><span>Delayed <b id="efficiency-delayed" style="color:#d85b54">0</b></span></div>
+    </div>
+  </div>
+
+  <div class="quick-grid">
+    <button class="quick-card" onclick="navigate('bins')"><span class="quick-icon">▤</span><span><b>Manage bins</b><small>View and update bin status</small></span></button>
+    <button class="quick-card" onclick="navigate('schedules')"><span class="quick-icon">▣</span><span><b>Plan collection</b><small>Organise upcoming routes</small></span></button>
+    <button class="quick-card" onclick="navigate('insights')"><span class="quick-icon">◷</span><span><b>View smart insights</b><small>Explore waste predictions</small></span></button>
+  </div>
+
+  <div class="panel schedule-panel">
+    <div class="panel-head"><div><h3>Upcoming collections</h3><p>Keep every route moving smoothly</p></div><button class="text-btn" onclick="navigate('schedules')">Manage schedule →</button></div>
+    <div id="upcoming-mini">
+      <div class="schedule-row"><div class="schedule-date"><b>31</b><small>Oct</small></div><div class="schedule-info"><b>South Zone · Organic waste</b><small>Team Green · 8 bins assigned</small></div><div class="schedule-time">11:30 AM</div></div>
+      <div class="schedule-row"><div class="schedule-date"><b>31</b><small>Oct</small></div><div class="schedule-info"><b>Central Market · Mixed waste</b><small>Team Alpha · 6 bins assigned</small></div><div class="schedule-time">12:15 PM</div></div>
+      <div class="schedule-row"><div class="schedule-date"><b>31</b><small>Oct</small></div><div class="schedule-info"><b>Lake View · Plastic waste</b><small>Team Beta · 5 bins assigned</small></div><div class="schedule-time">02:00 PM</div></div>
+    </div>
+  </div>
+</section>
+<section id="page-bins" class="page">
+ <div class="section-heading"><div><h2>Bin management</h2><p>Monitor capacity, category and location for every bin.</p></div><button class="primary" onclick="openModal('bin')">＋ Add new bin</button></div>
+ <div class="toolbar"><input id="bin-search" placeholder="⌕  Search bin or location..." oninput="renderBins()"><select id="bin-filter" aria-label="Filter bins by fill level" onchange="renderBins()"><option value="">All fill levels</option><option value="critical">Critical (80%+)</option><option value="attention">Needs attention (60%+)</option><option value="healthy">Healthy</option></select></div>
+ <div class="panel table-panel"><div id="bins-table"></div></div>
+</section>
+<section id="page-locations" class="page"><div class="section-heading"><div><h2>Locations</h2><p>Waste collection points across Hyderabad.</p></div><button class="primary" onclick="openModal('location')">＋ Add location</button></div><div id="locations-grid" class="locations-grid"></div></section>
+<section id="page-teams" class="page"><div class="section-heading"><div><h2>Collection teams</h2><p>Your people on the ground keeping the city clean.</p></div><button class="primary" onclick="openModal('team')">＋ Add team</button></div><div id="teams-grid" class="teams-grid"></div></section>
+<section id="page-schedules" class="page"><div class="section-heading"><div><h2>Collection schedules</h2><p>Assign bins and teams to upcoming collection routes.</p></div><button class="primary" onclick="openModal('schedule')">＋ Create schedule</button></div><div class="panel table-panel"><div id="schedules-table"></div></div></section>
+<section id="page-history" class="page"><div class="section-heading"><div><h2>Collection history</h2><p>A transparent record of every completed pickup.</p></div><button class="primary" onclick="openModal('collection')">＋ Log a collection</button></div><div class="panel table-panel"><div id="history-table"></div></div></section>
+<section id="page-insights" class="page"><div class="section-heading"><div><h2>Smart insights</h2><p>Use historical collection data to anticipate tomorrow’s needs.</p></div><span class="pill">PYTHON FORECAST</span></div><div id="prediction-card" class="prediction-card"></div><div class="panel table-panel"><div id="priority-table"></div></div></section>
+</main>
+</div>
+<div id="modal" class="modal"><div class="modal-card"><div class="modal-head"><div><h3 id="modal-title">Add item</h3><p id="modal-subtitle">Enter the details below.</p></div><button class="close" onclick="closeModal()">×</button></div><form id="modal-form"></form></div></div>
+<div id="toast" class="toast"></div>
+
+
+
+<script>
+(function(){
+'use strict';
+const $=id=>document.getElementById(id);
+const KEY='ecotrack_single_index_v1';
+const titles={overview:'Good morning, Admin ✦',bins:'Bin management',locations:'Locations',teams:'Collection teams',schedules:'Collection schedules',history:'Collection history',insights:'Smart insights'};
+const defaults={
+ locations:[
+  {id:1,name:'Madhapur',area:'HITEC City',city:'Hyderabad'},
+  {id:2,name:'Gachibowli',area:'Financial District',city:'Hyderabad'},
+  {id:3,name:'Kukatpally',area:'KPHB',city:'Hyderabad'},
+  {id:4,name:'Miyapur',area:'Miyapur Metro',city:'Hyderabad'},
+  {id:5,name:'Kondapur',area:'Botanical Garden Road',city:'Hyderabad'},
+  {id:6,name:'Quthbullapur',area:'Jeedimetla',city:'Hyderabad'},
+  {id:7,name:'Mosapet',area:'Hyderabad',city:'Hyderabad'}
+ ],
+ bins:[],teams:[],schedules:[],history:[]
+};
+let db;
+try{db=JSON.parse(localStorage.getItem(KEY))||structuredClone(defaults)}catch(e){db=JSON.parse(JSON.stringify(defaults))}
+for(const k of Object.keys(defaults)) if(!Array.isArray(db[k])) db[k]=defaults[k].slice();
+function save(){localStorage.setItem(KEY,JSON.stringify(db));renderAll()}
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function id(){return Date.now()+Math.floor(Math.random()*1000)}
+function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2300)}
+window.showToast=toast;
+window.navigate=function(page){
+ document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+ $('page-'+page)?.classList.add('active');
+ document.querySelectorAll('.nav-item').forEach(x=>x.classList.toggle('active',x.dataset.page===page));
+ $('crumb').textContent=page.toUpperCase();$('page-title').textContent=titles[page]||page;
+ renderAll();
+};
+document.querySelectorAll('.nav-item').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.page)));
+function table(headers,rows){return '<table><thead><tr>'+headers.map(h=>'<th>'+h+'</th>').join('')+'</tr></thead><tbody>'+(rows.length?rows.join(''):'<tr><td colspan="'+headers.length+'"><div class="empty">No records yet. Use the Add button to create your first record.</div></td></tr>')+'</tbody></table>'}
+function opt(items,label){return items.length?items.map(x=>'<option value="'+x.id+'">'+esc(label(x))+'</option>').join(''):'<option value="">Add records first</option>'}
+function locName(idv){return db.locations.find(x=>String(x.id)===String(idv))?.name||'—'}
+function teamName(idv){return db.teams.find(x=>String(x.id)===String(idv))?.name||'—'}
+window.renderBins=function(){
+ const q=($('bin-search')?.value||'').toLowerCase(),f=$('bin-filter')?.value||'';
+ const rows=db.bins.filter(b=>(b.name+' '+locName(b.locationId)+' '+b.category).toLowerCase().includes(q)).filter(b=>!f||(f==='critical'?b.status==='Critical (80%+)':f==='attention'?b.status==='Needs attention (60%+)':b.status==='Healthy'));
+ $('bins-table').innerHTML=table(['BIN','CATEGORY','LOCATION','FILL LEVEL','STATUS','ACTION'],rows.map(b=>'<tr><td><b>'+esc(b.name)+'</b></td><td>'+esc(b.category)+'</td><td>'+esc(locName(b.locationId))+'</td><td>'+b.fill+'%</td><td><span class="tag '+(b.status==='Critical (80%+)'?'red':b.status==='Needs attention (60%+)'?'orange':'')+'">'+esc(b.status||'Healthy')+'</span></td><td><button class="text-btn" onclick="removeItem(\'bins\','+b.id+')">Delete</button></td></tr>'));
+};
+window.removeItem=function(kind,itemId){if(!confirm('Delete this record?'))return;db[kind]=db[kind].filter(x=>x.id!==itemId);save();toast('Record deleted')};
+function renderLocations(){
+ $('locations-grid').innerHTML=db.locations.map(l=>'<article class="location-card"><div class="location-symbol">⌖</div><h3>'+esc(l.name)+'</h3><p>'+esc(l.area)+', '+esc(l.city)+'</p><div class="location-meta"><span>'+db.bins.filter(b=>String(b.locationId)===String(l.id)).length+' bins registered</span><button class="text-btn" onclick="removeItem(\'locations\','+l.id+')">Delete</button></div></article>').join('')||'<div class="empty">No locations added.</div>';
+}
+function renderTeams(){
+ $('teams-grid').innerHTML=db.teams.map(t=>'<article class="team-card"><div class="team-avatar">♧</div><h3>'+esc(t.name)+'</h3><p>'+esc(t.leader)+' · '+esc(t.phone)+'</p><div class="team-details"><div>Members<b>'+esc(t.members)+'</b></div><div>Assigned schedules<b>'+db.schedules.filter(s=>String(s.teamId)===String(t.id)).length+'</b></div></div><button class="text-btn" onclick="removeItem(\'teams\','+t.id+')">Delete team</button></article>').join('')||'<div class="empty">No teams added yet.</div>';
+}
+function renderSchedules(){
+ const rows=db.schedules.map(s=>'<tr><td><b>'+esc(s.title)+'</b></td><td>'+esc(locName(s.locationId))+'</td><td>'+esc(teamName(s.teamId))+'</td><td>'+esc(s.date)+' '+esc(s.time)+'</td><td><span class="tag">'+esc(s.status)+'</span></td><td><button class="text-btn" onclick="startSchedule('+s.id+')">Start</button> <button class="text-btn" onclick="completeSchedule('+s.id+')">Complete</button> <button class="text-btn" onclick="removeItem(\'schedules\','+s.id+')">Delete</button></td></tr>');
+ $('schedules-table').innerHTML=table(['SCHEDULE','LOCATION','TEAM','DATE & TIME','STATUS','ACTION'],rows);
+}
+window.completeSchedule=function(sid){const s=db.schedules.find(x=>x.id===sid);if(!s)return;s.status='Completed';save();toast('Schedule marked completed')};
+function renderHistory(){
+ const rows=db.history.slice().reverse().map(h=>'<tr><td><b>'+esc(h.date)+'</b></td><td>'+esc(locName(h.locationId))+'</td><td>'+esc(h.category)+'</td><td>'+esc(teamName(h.teamId))+'</td><td><b>'+esc(h.weight)+' kg</b></td></tr>');
+ $('history-table').innerHTML=table(['DATE','LOCATION','WASTE CATEGORY','TEAM','WEIGHT'],rows);
+}
+function renderInsights(){
+ const total=db.history.reduce((a,h)=>a+Number(h.weight||0),0),avg=db.bins.length?Math.round(db.bins.reduce((a,b)=>a+Number(b.fill),0)/db.bins.length):0;
+ $('prediction-card').innerHTML='<div><h3>Waste generation snapshot</h3><p>Estimate based on the collection records entered in this browser. Add more collection history to make this estimate more useful.</p></div><div class="prediction-value"><strong>'+Math.round(total/Math.max(1,new Set(db.history.map(h=>h.date)).size)*1.15)+' kg</strong><small>Estimated next-day collection</small></div>';
+ const critical=db.bins.filter(b=>b.fill>=80);
+ $('priority-table').innerHTML=table(['PRIORITY BIN','LOCATION','FILL LEVEL','RECOMMENDATION'],critical.map(b=>'<tr><td><b>'+esc(b.name)+'</b></td><td>'+esc(locName(b.locationId))+'</td><td><span class="tag red">'+b.fill+'%</span></td><td>Schedule collection soon</td></tr>'));
+ if(!critical.length)$('priority-table').innerHTML='<div class="empty">No critical bins right now. Add bins and update fill levels to see priority recommendations.</div>';
+}
+function renderOverview(){
+ const n=db.bins.length,active=db.bins.filter(b=>b.status!=='Inactive').length,critical=db.bins.filter(b=>b.status==='Critical (80%+)').length,kg=db.history.reduce((a,h)=>a+Number(h.weight||0),0),avg=n?Math.round(db.bins.reduce((a,b)=>a+Number(b.fill),0)/n):0;
+ $('stat-bins').textContent=n;$('stat-active').textContent=active;$('stat-critical').textContent=critical;$('stat-kg').textContent=kg.toLocaleString('en-IN');$('stat-fill').textContent=avg;
+ $('last-updated').textContent='just now';
+ const zone=db.locations.slice(0,6);
+ $('fill-chart').innerHTML=zone.length?zone.map(l=>{const bins=db.bins.filter(b=>String(b.locationId)===String(l.id));const v=bins.length?Math.round(bins.reduce((a,b)=>a+b.fill,0)/bins.length):0;return '<div class="bar-item"><b>'+v+'%</b><div class="bar '+(v>=80?'critical':v>=60?'warn':'')+'" style="height:'+Math.max(4,v)+'%"></div><small>'+esc(l.name)+'</small></div>'}).join(''):'<div class="empty">Add locations and bins to view fill levels.</div>';
+ $('recent-list').innerHTML=db.history.slice(-5).reverse().map(h=>'<div class="activity"><div class="activity-icon">♧</div><div><b>'+esc(h.category)+' collected</b><small>'+esc(locName(h.locationId))+' · '+esc(teamName(h.teamId))+'</small></div><strong>'+esc(h.weight)+' kg</strong><span class="activity-time">'+esc(h.date)+'</span></div>').join('')||'<div class="empty">Collection records will appear here.</div>';
+ const health=[['Healthy',db.bins.filter(b=>b.status==='Healthy').length,'#71bca0'],['Attention needed',db.bins.filter(b=>b.status==='Needs attention (60%+)').length,'#e7b36f'],['Critical',critical,'#df7770']];
+ const panel=document.querySelector('.overview-lower .health-panel');
+ if(panel){const rows=health.map(([name,count,color])=>'<div class="health-row"><div class="health-count">'+count+'</div><div class="health-label"><b>'+name+'</b><small>Registered bins</small></div><div class="health-track"><i style="width:'+(n?count/n*100:0)+'%;background:'+color+'"></i></div><div class="health-status">'+(n?Math.round(count/n*100):0)+'%</div></div>').join('');panel.querySelectorAll('.health-row').forEach(x=>x.remove());panel.insertAdjacentHTML('beforeend',rows)}
+ const up=db.schedules.filter(s=>s.status!=='Completed').slice().sort((a,b)=>a.date.localeCompare(b.date)).slice(0,4);
+ $('upcoming-mini').innerHTML=up.map(s=>'<div class="schedule-row"><div class="schedule-date"><b>'+esc((s.date||'').slice(-2))+'</b><small>'+esc(new Date(s.date+'T00:00:00').toLocaleString('en',{month:'short'}))+'</small></div><div class="schedule-info"><b>'+esc(s.title)+'</b><small>'+esc(locName(s.locationId))+' · '+esc(teamName(s.teamId))+'</small></div><div class="schedule-time">'+esc(s.time)+'</div></div>').join('')||'<div class="empty">Upcoming schedules will appear here.</div>';
+}
+
+ const USERS_KEY='ecotrack_demo_users_v1', SESSION_KEY='ecotrack_demo_session_v1';
+ let authMode='signin';
+ function readUsers(){try{return JSON.parse(localStorage.getItem(USERS_KEY))||[]}catch(e){return []}}
+ function authError(msg){$('auth-error').textContent=msg;$('auth-error').classList.add('show')}
+ window.showAuthMode=function(mode){
+   authMode=mode;$('auth-error').classList.remove('show');
+   $('auth-title').textContent=mode==='signup'?'Create your account':'Welcome back';
+   $('auth-subtitle').textContent=mode==='signup'?'Register to access the EcoTrack operations dashboard.':'Sign in to manage city waste operations.';
+   $('auth-name-field').style.display=mode==='signup'?'grid':'none';
+   $('auth-submit').textContent=mode==='signup'?'Create account':'Sign in';
+   $('signin-tab').classList.toggle('active',mode==='signin');$('signup-tab').classList.toggle('active',mode==='signup');
+ };
+ function setSignedIn(user){
+   localStorage.setItem(SESSION_KEY,JSON.stringify({email:user.email,name:user.name}));
+   $('auth-screen').classList.remove('show');
+   $('page-title').textContent='Good morning, '+(user.name||'Admin')+' ✦';
+   $('user-avatar').textContent=(user.name||'AD').split(/\s+/).map(x=>x[0]).join('').slice(0,2).toUpperCase();
+ }
+ window.signOut=function(){localStorage.removeItem(SESSION_KEY);$('auth-screen').classList.add('show');showAuthMode('signin')};
+ $('auth-form').addEventListener('submit',function(e){
+   e.preventDefault();const d=Object.fromEntries(new FormData(e.target).entries());
+   const email=String(d.email||'').trim().toLowerCase(),password=String(d.password||'');
+   if(password.length<6){authError('Password must contain at least 6 characters.');return}
+   const users=readUsers();
+   if(authMode==='signup'){
+     const name=String(d.name||'').trim();if(!name){authError('Please enter your full name.');return}
+     if(users.some(u=>u.email===email)){authError('This email is already registered. Please sign in.');return}
+     const user={name,email,password};users.push(user);localStorage.setItem(USERS_KEY,JSON.stringify(users));setSignedIn(user);toast('Account created successfully');
+   }else{
+     const user=users.find(u=>u.email===email&&u.password===password);
+     if(!user){authError('Email or password is incorrect. Create an account if you are new.');return}
+     setSignedIn(user);toast('Signed in successfully');
+   }
+ });
+ function checkSession(){try{const s=JSON.parse(localStorage.getItem(SESSION_KEY));if(s){setSignedIn(s);return}}catch(e){}$('auth-screen').classList.add('show')}
+ window.startSchedule=function(sid){const s=db.schedules.find(x=>x.id===sid);if(!s)return;if(s.status!=='Completed'){s.status='In progress';save();toast('Collection route started')}};
+ window.completeSchedule=function(sid){const s=db.schedules.find(x=>x.id===sid);if(!s)return;s.status='Completed';s.completedAt=new Date().toISOString();save();toast('Schedule marked completed')};
+ function updateEfficiency(){
+   const today=new Date().toLocaleDateString('en-CA');
+   const routes=db.schedules.filter(s=>s.date===today);
+   const completed=routes.filter(s=>s.status==='Completed').length;
+   const delayed=routes.filter(s=>s.date<today&&s.status!=='Completed').length;
+   const active=routes.filter(s=>s.status==='In progress').length;
+   const scheduled=routes.filter(s=>s.status!=='Completed'&&s.status!=='In progress').length;
+   const total=routes.length,percent=total?Math.round(completed/total*100):0;
+   $('efficiency-percent').textContent=percent+'%';
+   $('efficiency-ring').style.background='conic-gradient(#16856d 0 '+(percent*3.6)+'deg,#eaf1ed '+(percent*3.6)+'deg 360deg)';
+   $('efficiency-summary').textContent=completed+' of '+total+' routes completed';
+   $('efficiency-message').textContent=total?(active+' in progress, '+scheduled+' scheduled and '+delayed+' delayed.'): 'No collection routes are scheduled for today. Add a schedule to start tracking efficiency.';
+   $('efficiency-completed').textContent=completed;$('efficiency-progress').textContent=active+scheduled;$('efficiency-delayed').textContent=delayed;
+ }
+
+function renderAll(){renderBins();renderLocations();renderTeams();renderSchedules();renderHistory();renderInsights();renderOverview();updateEfficiency()}
+function field(label,name,type='text',extra=''){return '<div class="field"><label>'+label+'</label><input name="'+name+'" type="'+type+'" '+extra+' required></div>'}
+window.openModal=function(type){
+ const forms={
+ location:['Add Hyderabad location','Register a new collection area.',field('Location name','name')+field('Area / landmark','area')+'<input type="hidden" name="city" value="Hyderabad">'],
+ bin:['Register new bin','Add a bin to a Hyderabad location.',field('Bin name / ID','name')+'<div class="field"><label>Waste category</label><select name="category"><option>Mixed waste</option><option>Organic</option><option>Plastic</option><option selected>Paper</option><option>Hazardous</option></select></div><div class="field"><label>Location</label><select name="locationId">'+db.locations.map(x=>'<option value="'+x.id+'" '+(/mosapet/i.test(x.name)?'selected':'')+'>'+esc(x.name)+'</option>').join('')+'</select></div>'+field('Current fill level (%)','fill','number','min="0" max="100" value="25"')+'<div class="field"><label>Status</label><select name="status" required><option value="" disabled>All fill levels</option><option value="Critical (80%+)" >Critical (80%+)</option><option value="Needs attention (60%+)" >Needs attention (60%+)</option><option value="Healthy" selected>Healthy</option></select></div>'],
+ team:['Add collection team','Create a team for collection routes.',field('Team name','name')+field('Team leader','leader')+field('Contact number','phone','tel')+field('Number of members','members','number','min="1" value="3"')],
+ schedule:['Create collection schedule','Assign a team to a location and pickup time.',field('Schedule title','title')+'<div class="field"><label>Location</label><select name="locationId">'+opt(db.locations,x=>x.name)+'</select></div><div class="field"><label>Collection team</label><select name="teamId">'+opt(db.teams,x=>x.name)+'</select></div>'+field('Date','date','date')+field('Time','time','time')],
+ collection:['Log completed collection','This record appears in Collection History and Overview.', '<div class="field"><label>Location</label><select name="locationId">'+opt(db.locations,x=>x.name)+'</select></div><div class="field"><label>Collection team</label><select name="teamId">'+opt(db.teams,x=>x.name)+'</select></div><div class="field"><label>Waste category</label><select name="category"><option>Mixed waste</option><option>Organic</option><option>Plastic</option><option>Paper</option></select></div>'+field('Collected weight (kg)','weight','number','min="0.1" step="0.1"')+field('Collection date','date','date','value="'+new Date().toISOString().slice(0,10)+'"')]
+ };
+ const f=forms[type];if(!f)return;
+ $('modal-title').textContent=f[0];$('modal-subtitle').textContent=f[1];
+ $('modal-form').innerHTML=f[2]+'<button class="primary modal-submit" type="submit">Save record</button>';
+ $('modal').classList.add('show');
+ $('modal-form').onsubmit=function(e){e.preventDefault();const d=Object.fromEntries(new FormData(e.target).entries());d.id=id();
+ if(type==='location'){db.locations.push(d)}
+ if(type==='bin'){d.fill=Math.max(0,Math.min(100,Number(d.fill)||0));db.bins.push(d)}
+ if(type==='team'){db.teams.push(d)}
+ if(type==='schedule'){d.status='Scheduled';db.schedules.push(d)}
+ if(type==='collection'){db.history.push(d)}
+ $('modal').classList.remove('show');save();toast('Saved successfully — updated in related sections')};
+};
+window.closeModal=function(){$('modal').classList.remove('show')};
+$('modal').addEventListener('click',e=>{if(e.target===$('modal'))closeModal()});
+window.exportOverview=function(){const csv=[['Metric','Value'],['Bins',db.bins.length],['Locations',db.locations.length],['Teams',db.teams.length],['Schedules',db.schedules.length],['Collections',db.history.length],['Collected kg',db.history.reduce((a,h)=>a+Number(h.weight),0)]].map(x=>x.join(',')).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='ecotrack-overview.csv';a.click();URL.revokeObjectURL(a.href)};
+$('today').textContent=new Date().toLocaleDateString('en-IN',{weekday:'short',day:'2-digit',month:'short',year:'numeric'});
+$('overview-date').textContent=new Date().toLocaleDateString('en-IN',{weekday:'short',day:'2-digit',month:'short',year:'numeric'});
+renderAll();checkSession();
+})();
+</script>
+
+</body></html>
